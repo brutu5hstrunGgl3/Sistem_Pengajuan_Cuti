@@ -27,7 +27,7 @@
         <h4>Jumlah Cuti Kamu Sisa :</h4>
     </div>
     <div class="card-body">
-    {{ $cutiSisa ?? 'Data tidak tersedia' }} 
+    {{ $cutiSisa ??  'Data tidak tersedia' }} Hari 
     </div>
 </div>
 
