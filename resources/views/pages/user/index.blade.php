@@ -17,8 +17,9 @@
                     <a href="{{ route('user.create') }}"
                         class="btn btn-primary">Tambah User</a>
                 </div>
+                
                 <div class="section-header-breadcrumb">
-                   
+               
                 </div>
             </div>
             <div class="section-body">
@@ -45,7 +46,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="float-left">
-
+                                <a href="{{ route('users.export') }}" class="btn btn-success">Export to Excel</a>
                                 </div>
                                 <div class="float-right">
                                     <form method="GET" action="{{ route('user.index') }}">

@@ -27,13 +27,13 @@ Route::get('/ajukan', function () {
 
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('dashboard', function (){ 
+    Route::get('/home', function (){ 
         return view('pages.App.dashboard');
-    })->name('dashboard');
+    })->name('home');
     Route::get('/captcha-refresh', [CaptchaController::class, 'refresh']);
 
     Route::resource('user', UserController::class);
-    Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+    Route::get('/home', [UserController::class, 'dashboard'])->name('home');
     Route::resource('pengajuan_cuti', Pengajuan_Cuti_Controller::class);
    
 
@@ -44,7 +44,9 @@ Route::middleware(['auth'])->group(function () {
     
 
     Route::get('/pengajuan_cuti/download/{id}', [Pengajuan_Cuti_Controller::class, 'download'])->name('pengajuan_cuti.download');
-
+    
+    Route::get('users/export', [\App\Http\Controllers\UserController::class, 'export'])
+    ->name('users.export');
 
    
 
