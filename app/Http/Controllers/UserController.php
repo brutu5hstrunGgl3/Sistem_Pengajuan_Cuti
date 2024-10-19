@@ -7,24 +7,42 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 
 class UserController extends Controller
 {
-       public function index(Request $request)
-    {
-        $users = DB::table('users')
+
+    public function dashboard()
+{
+    // Ambil data pengguna yang sedang login
+    $user = Auth::user();
+
+    // Ambil nilai remaining_days dari tabel users berdasarkan pengguna yang login
+    $cutiSisa = $user->remaining_day; // Asumsi 'remaining_days' adalah kolom di tabel 'users'
+
+    // Menampilkan dashboard
+    return view('pages.app.dashboard', compact('cutiSisa'));
+}
+public function index(Request $request)
+{
+    // Ambil data pengguna yang sedang login
+    $user = Auth::user();
+
+    // Ambil data pengguna untuk tabel, ini untuk pagination
+    $users = DB::table('users')
         ->when($request->input('name'), function ($query, $name) {
             return $query->where('name', 'like', '%' . $name . '%');
         })
-        //->select('id', 'name', 'email', 'phone', DB::raw('DATE_FORMAT(created_at, "%d %M %Y") as created_at'))
         ->orderBy('id', 'desc')
         ->paginate(10);
 
+    // Ambil remaining_days dari pengguna yang sedang login
+    $cutiSisa = $user->remaining_day; // Mengambil nilai remaining_days dari pengguna yang sedang login
 
-        
-        return view('pages.user.index' , compact('users'));
-    }
+    return view('pages.user.index', compact('users', 'cutiSisa'));
+}
+
 
     /**
      * Show the form for creating a new resource.
@@ -42,11 +60,9 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|max:100|min:3',
-            'email' => 'required|email|unique:user',
-            'password' => 'required|min:8',
-            'role' => 'required|in:ADMIN,ATASAN,KARYAWAN',
-            'remaining_day' => 'required|integer|min:0',
+           
+            'email' => 'required|email|unique:users',
+            
         ]);
    
 

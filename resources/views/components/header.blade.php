@@ -164,12 +164,12 @@
         <li class="dropdown"><a href="#"
                 data-toggle="dropdown"
                 class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                @if(auth()->user()->rul == 'ADMIN')
+                @if(auth()->user()->role == 'ADMIN')
                 <img alt="image"
                     src="{{ asset('img/avatar/school.jpg') }}"
                     class="rounded-circle mr-1">
                     @endif
-                    @if(auth()->user()->rul == 'PESERTA')
+                    @if(auth()->user()->role == 'KARYAWAN')
                 <img alt="image"
                     src="{{ asset('img/avatar/avatar-1.png') }}"
                     class="rounded-circle mr-1">
@@ -178,7 +178,7 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right">
                 <div class="dropdown-title">Anda telah login </div>
-                <a href=""
+                <a href="{{route('pages.profile.index')}}"
                     class="dropdown-item has-icon">
                     <i class="far fa-user"></i> Profile 
    

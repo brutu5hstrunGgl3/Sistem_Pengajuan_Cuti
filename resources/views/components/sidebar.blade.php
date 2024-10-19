@@ -9,8 +9,8 @@
         <ul class="sidebar-menu">
 
 
-            <ul class="sidebar-menu">
- 
+           
+            @if(auth()->user()->role == 'ADMIN' || auth()->user()->role == 'ATASAN')
 <li class="nav-item dropdown ">
     <a href="#" class="nav-link has-dropdown"> <i class="fas fa-fire"></i><span>User</span></a>
     <ul class="dropdown-menu">
@@ -20,21 +20,23 @@
 
     </ul>
 </li>
-
+@endif
 <li class="nav-item dropdown ">
     <a href="#" class="nav-link has-dropdown"> <i class="fas fa-fire"></i><span>Daftar Cuti</span></a>
     <ul class="dropdown-menu">
-        <li>
-            <a class="nav-link" href="">Lihat Daftar Cuti</a>
            
+        <li>
+            <a class="nav-link" href="{{route('pengajuan_cuti.index')}}">Lihat Daftar Cuti</a>
             <li class="nav-item dropdown ">
         
         </li>
+        
         <li>
-        <a class="nav-link" href="">pengajuan Cuti </a>
+        <a class="nav-link" href="{{route('pages.Cuti.ajukan')}}">pengajuan Cuti </a>
 </li>
     </ul>
 </li>
+
 
 <li class="nav-item dropdown ">
     <a href="#" class="nav-link has-dropdown"> <i class="fas fa-fire"></i><span>Riwayat Cuti</span></a>
@@ -48,11 +50,16 @@
            
        
 </li>
+
 <li>
       
         </li>
+
+      
   
 </li>
+
+
 
             
 

@@ -14,8 +14,8 @@
             <div class="section-header">
                 <h1>Pt.Jaya Makmur Selaras</h1>
                 <div class="section-header-button">
-                    <a href="{{ route('user.create') }}"
-                        class="btn btn-primary">Tambah User</a>
+                    <a href="{{route('pages.Cuti.ajukan')}}"
+                        class="btn btn-primary">Tambah Pengajuan Cuti</a>
                 </div>
                 <div class="section-header-breadcrumb">
                    
@@ -28,14 +28,14 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card mb-0">
-                            
+                           
 
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+              
                 <div class="row mt-4">
                     <div class="col-12">
                         <div class="card">
@@ -48,7 +48,7 @@
 
                                 </div>
                                 <div class="float-right">
-                                    <form method="GET" action="{{ route('user.index') }}">
+                                    <form method="GET" action="{{ route('pengajuan_cuti.index') }}">
                                         <div class="input-group">
                                             <input type="text"
                                                 class="form-control"
@@ -69,35 +69,55 @@
                                         <tr>
 
                                             <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Roles</th>
-                                            <th>Sisa Cuti</th>
+                                            <th>Jenis Cuti</th>
+                                            <th>Tanggal pengajuan</th>
+                                            <th>Tanggal mulai</th>
+                                            <th>Tanggal selesai</th>
+                                            <th>Alasan</th>
+                                            <th>Status</th>
+                                            <th>File</th>
                                             <th>Action</th>
                                         </tr>
-                                        @foreach ($users as $user)
+                           @foreach ($pengajuan_cuti as $cuti)
                                             <tr>
                                             <td>
-                                            {{ $user->name }} 
+                                            {{ $cuti->name }}
                                             </td>
                                             <td>
-                                            {{ $user->email }}
+                                            {{ $cuti->jenis_cuti}}
                                             </td>
                                             <td>
-                                            {{ $user->role }}
+                                            {{ $cuti->tanggal_pengajuan }}
                                             </td>
                                             <td>
-                                            {{ $user->remaining_day }}
+                                            {{ $cuti->tanggal_mulai}}
+                                            </td>
+                                            <td>
+                                            {{ $cuti->tanggal_selesai }}
+                                            </td>
+                                            <td>
+                                            {{ $cuti->alasan}}
+                                            </td>
+                                            <td>
+                                            {{ $cuti->status }}
+                                            </td>
+                                            <td>
+                                            @if($cuti->file)
+                                            <a href="{{route('pengajuan_cuti.download', $cuti->id)}}" class="btn btn-primary">Download PDF</a>
+    @else
+        Tidak ada file
+    @endif
                                             </td>
                                             <td>
                                                 
                                             <div class="d-flex justify-content-center">
-                                                         <a href="{{route('user.edit', $user->id) }}"
+                                                         <a href="{{ route('pengajuan_cuti.edit', $cuti->id) }}"
                                                             class="btn btn-sm btn-info btn-icon">
                                                             <i class="fas fa-edit"></i>
                                                             Edit
                                                         </a>
 
-                                                        <form onclick="return confirm('are you sure ? ')"  class="d-inline" action="{{ route('user.destroy', $user->id) }} " method="POST"
+                                                        <form onclick="return confirm('are you sure ? ')"  class="d-inline" action="{{route('pengajuan_cuti.destroy', $cuti->id)}}" method="POST"
                                                             class="ml-2">
                                                             <input type="hidden" name="_method" value="DELETE" />
                                                             <input type="hidden" name="_token"
@@ -118,7 +138,7 @@
                                     </table>
                                 </div>
                                 <div class="float-right">
-                                {{ $users->withQueryString()->links() }}
+                                {{ $pengajuan_cuti->withQueryString()->links() }}
                                 </div>
                             </div>
                         </div>
