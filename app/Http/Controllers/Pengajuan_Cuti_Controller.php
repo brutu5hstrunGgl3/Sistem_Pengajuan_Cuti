@@ -63,7 +63,7 @@ class Pengajuan_Cuti_Controller extends Controller
  
         // Buat data pengajuan cuti baru
         $pengajuan_cuti = Cuti::create([
-            'name' => $request->name,
+            'name' => Auth::user()->name,
             'jenis_cuti' => $request->jenis_cuti,
             'tanggal_pengajuan' => $request->tanggal_pengajuan,
             'tanggal_mulai' => $request->tanggal_mulai,

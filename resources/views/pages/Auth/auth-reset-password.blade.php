@@ -11,45 +11,48 @@
         <div class="card-header">
             <h4>Reset Password</h4>
         </div>
-
+        <div class="card-body">
+            @if (session('status'))
+            <div class="alert alert-success" role="alert">
+                {{ session('status') }}
+            </div>
+            @endif
         <div class="card-body">
             <p class="text-muted">We will send a link to reset your password</p>
             <form method="POST"  action="{{ route('password.update') }}">
-                <div class="form-group">
+            <input type="hidden" name="token" value="{{ $request->route('token') }}">
+            <div class="form-group">
                     <label for="email">Email</label>
                     <input id="email"
                         type="email"
-                        class="form-control"
+                        class="form-control @error('email') is-invalid @enderror"
                         name="email"
-                        tabindex="1"
-                        required
-                        autofocus>
-                </div>
+                        value="{{ $request->email ?? old('email') }}" required autocomplete="email" autofocus placeholder="Masukkan Alamat Elamil">
+                        @error('email')
+                        <div class="alert alert-danger mt-2">
+                        <strong>{{ $message }}</strong>
+                    </div>
+                    @enderror
+                    </div>
 
                 <div class="form-group">
                     <label for="password">New Password</label>
                     <input id="password"
                         type="password"
-                        class="form-control pwstrength"
-                        data-indicator="pwindicator"
-                        name="password"
-                        tabindex="2"
-                        required>
-                    <div id="pwindicator"
-                        class="pwindicator">
-                        <div class="bar"></div>
-                        <div class="label"></div>
+                        class="form-control  @error('password') is-invalid @enderror"
+                        name="password" required autocomplete="new-password" placeholder="Masukkan Password Baru">
+                        @error('password')
+                        <div class="alert alert-danger mt-2">
+                        <strong>{{ $message }}</strong>
                     </div>
+                    @enderror
+                
                 </div>
 
                 <div class="form-group">
-                    <label for="password-confirm">Confirm Password</label>
-                    <input id="password-confirm"
-                        type="password"
-                        class="form-control"
-                        name="confirm-password"
-                        tabindex="2"
-                        required>
+                    <label class="font-weight-bold text-uppercase">Konfirmasi Password</label>
+                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
+                        required autocomplete="new-password" placeholder="Masukkan Konfirmasi Password Baru">
                 </div>
 
                 <div class="form-group">
