@@ -64,7 +64,7 @@ class FortifyServiceProvider extends ServiceProvider
             return view('pages.Auth.auth-forgot-password');
         });
 
-        Fortify::resetPasswordView(function() {
+        Fortify::resetPasswordView(function( $request ) {
             return view('pages.Auth.auth-reset-password', ['request' => request()]);  
         });
 

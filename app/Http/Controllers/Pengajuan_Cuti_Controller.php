@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Cuti;
 use Barryvdh\DomPDF\Facade\PDF;
-use Illuminate\Support\Facades\Auth; // Pastikan ini diimpor dengan benar
+use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\CutiExport; // Pastikan ini diimpor dengan benar
 
 class Pengajuan_Cuti_Controller extends Controller
 {
@@ -284,6 +286,40 @@ class Pengajuan_Cuti_Controller extends Controller
             return redirect()->back()->with('error', 'File tidak ditemukan.');
         }
 }
+
+public function history(Request $request)
+{
+    $user = Auth::user();
+    $query = Cuti::query();
+
+    // Jika user adalah ADMIN atau ATASAN, ambil semua pengajuan cuti
+    if (in_array($user->role, ['ADMIN', 'ATASAN'])) {
+        // Ambil semua data
+    } else {
+        // Jika bukan, ambil berdasarkan nama karyawan
+        $query->where('name', $user->name);
+    }
+
+    // Jika ada parameter tanggal mulai dan tanggal selesai
+    if ($request->has('tanggal_mulai') && $request->has('tanggal_selesai')) {
+        $tanggal_mulai = $request->input('tanggal_mulai');
+        $tanggal_selesai = $request->input('tanggal_selesai');
+
+        // Filter berdasarkan rentang tanggal
+        $query->whereBetween('tanggal_mulai', [$tanggal_mulai, $tanggal_selesai]);
+    }
+
+    // Ambil data dengan paginasi
+    $pengajuan_cuti = $query->orderBy('id', 'desc')->paginate(10);
+
+    return view('pages.Cuti.history', compact('pengajuan_cuti'));
+}
+
+public function export()
+{
+    return Excel::download(new CutiExport, 'cutis.xlsx');
+}
+
 
     
 }

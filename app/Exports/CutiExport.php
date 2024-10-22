@@ -2,20 +2,16 @@
 
 namespace App\Exports;
 
-
-use App\Models\User;
+use App\Models\Cuti;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
-class UsersExport implements FromCollection
+class CutiExport implements FromCollection
 {
     /**
     * @return \Illuminate\Support\Collection
     */
     public function collection()
     {
-        return \App\Models\User::all();
-       
+        return Cuti::all();
     }
-
-   
 }

@@ -47,6 +47,10 @@
                                 <div class="float-left">
 
                                 </div>
+                                <div class="card-body">
+                                <div class="float-left">
+                                <a href="{{ route('cutis.export') }}" class="btn btn-success">Export to Excel</a>
+                                </div>
                                 <div class="float-right">
                                     <form method="GET" action="{{ route('pengajuan_cuti.index') }}">
                                         <div class="input-group">
@@ -116,7 +120,7 @@
                                                             <i class="fas fa-edit"></i>
                                                             Edit
                                                         </a>
-
+                                                        @if(auth()->user()->role == 'ADMIN' || auth()->user()->role == 'ATASAN')
                                                         <form onclick="return confirm('are you sure ? ')"  class="d-inline" action="{{route('pengajuan_cuti.destroy', $cuti->id)}}" method="POST"
                                                             class="ml-2">
                                                             <input type="hidden" name="_method" value="DELETE" />
@@ -125,6 +129,7 @@
                                                             <button class="btn btn-sm btn-danger btn-icon confirm-delete">
                                                                 <i class="fas fa-times"></i> Delete
                                                             </button>
+                                                            @endif
                                                         </form>
                                                         <!-- Modal Konfirmasi Penghapusan -->
 

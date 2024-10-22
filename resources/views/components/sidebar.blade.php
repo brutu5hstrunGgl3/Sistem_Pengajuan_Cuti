@@ -37,29 +37,25 @@
     </ul>
 </li>
 
-
-<li class="nav ">
-    <a href="" class="nav-link"> <i class="fas fa-fire"></i><span>Riwayat Cuti</span></a>
-   
-        
-       
-        
+<li class="nav-item dropdown ">
+    <a href="#" class="nav-link has-dropdown"> <i class="fas fa-fire"></i><span>Riwayat Cuti</span></a>
+    <ul class="dropdown-menu">
            
-           
-       
-</li>
-
-<li>
-      
+        <li>
+            <a class="nav-link" href="{{route('cuti.history')}}">History Cuti</a>
+            <li class="nav-item dropdown ">
+        
         </li>
-
-      
-  
+        
+        <li>
+        <a class="nav-link" href="{{route('cutis.export')}}">Export to Excel </a>
 </li>
-
-
-
-            
+    </ul>
+</li> 
+</li>
+<li>   
+</li>   
+</li>
 
     </aside>
     

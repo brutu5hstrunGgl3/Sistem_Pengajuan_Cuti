@@ -47,6 +47,11 @@ Route::middleware(['auth'])->group(function () {
     
     Route::get('users/export', [\App\Http\Controllers\UserController::class, 'export'])
     ->name('users.export');
+    Route::get('cutis/export', [\App\Http\Controllers\Pengajuan_Cuti_Controller::class, 'export'])
+    ->name('cutis.export');
+
+    Route::get('/cuti/history', [Pengajuan_Cuti_Controller::class, 'history'])->name('cuti.history');
+
 
    
    

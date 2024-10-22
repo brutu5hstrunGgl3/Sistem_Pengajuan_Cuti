@@ -48,9 +48,12 @@
                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Jenis Cuti</label>
                         <div class="col-sm-12 col-md-7">
                             <select name="jenis_cuti" class="form-control selectric" required>
-                                <option value="Tahunan">Tahunan</option>
-                                <option value="Harian">Harian</option>
-                                <option value="Bulanan">Bulanan</option>
+                                <option value="Hamil"> Cuti Hamil</option>
+                                <option value="Menikah">Cuti Menikah</option>
+                                <option value="Sakit">Cuti Sakit</option>
+                                <option value="Sakit">Cuti Bersama</option>
+                                <option value="Sakit">Cuti Lainnya</option>
+
                             </select>
                             @error('jenis_cuti')
                                 <div class="invalid-feedback">

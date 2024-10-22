@@ -2,10 +2,11 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <!-- <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no"
-        name="viewport">
+        name="viewport"> -->
     <title>@yield('title') &mdash; Sistem Pengajuan Cuti </title>
+    <link rel="icon" href="{{ asset('img/avatar/jms.png') }}" type="image/x-icon">
 
     <!-- General CSS Files -->
     <link rel="stylesheet"

@@ -20,6 +20,7 @@
         <div class="card-body">
             <p class="text-muted">We will send a link to reset your password</p>
             <form method="POST"  action="{{ route('password.update') }}">
+                @csrf
             <input type="hidden" name="token" value="{{ $request->route('token') }}">
             <div class="form-group">
                     <label for="email">Email</label>
