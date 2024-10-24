@@ -33,7 +33,7 @@
                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama</label> 
                         <div class="col-sm-12 col-md-7">
                        
-                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $pengajuan_cuti->name }}">
+                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $pengajuan_cuti->name }}" readonly>
                             @error('name')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -112,7 +112,7 @@
                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Status</label>
                         <div class="col-sm-12 col-md-7">
                             <select name="status" class="form-control selectric" required>
-                                <option value="Pending" {{ $pengajuan_cuti->status == 'Pending' ? 'selected' : '' }}>Pending</option>
+                                <option value="Pending" {{ $pengajuan_cuti->status == 'Pending' ? 'selected' : '' }} readonly>Pending</option>
                                 @if(auth()->user()->role == 'ADMIN' || auth()->user()->role == 'ATASAN')
                                     <option value="Setujui" {{ $pengajuan_cuti->status == 'Setujui' ? 'selected' : '' }}>Setujui</option>
                                     <option value="Cuti Habis" {{ $pengajuan_cuti->status == 'Cuti Habis' ? 'selected' : '' }}>Cuti Habis</option>

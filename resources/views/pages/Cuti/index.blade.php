@@ -47,10 +47,12 @@
                                 <div class="float-left">
 
                                 </div>
+                                @if(auth()->user()->role == 'ADMIN' || auth()->user()->role == 'ATASAN')
                                 <div class="card-body">
                                 <div class="float-left">
                                 <a href="{{ route('cutis.export') }}" class="btn btn-success">Export to Excel</a>
                                 </div>
+                                @endif
                                 <div class="float-right">
                                     <form method="GET" action="{{ route('pengajuan_cuti.index') }}">
                                         <div class="input-group">

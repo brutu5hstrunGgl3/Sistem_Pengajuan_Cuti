@@ -113,9 +113,13 @@ class Pengajuan_Cuti_Controller extends Controller
     {
         // Cari data pengajuan cuti berdasarkan ID
         $pengajuan_cuti = Cuti::findOrFail($id);
+
+       
     
         // Validasi data dari request
-        $validatedData = $request->validated(); // Ambil data yang sudah divalidasi
+        $validatedData = $request->validated(); 
+        
+        $validatedData['name'] = $pengajuan_cuti->name;// Ambil data yang sudah divalidasi
     
         // Update data pengajuan cuti dengan data yang divalidasi
         $pengajuan_cuti->update($validatedData);
