@@ -12,7 +12,7 @@
            
             @if(auth()->user()->role == 'ADMIN' || auth()->user()->role == 'ATASAN')
 <li class="nav-item dropdown ">
-    <a href="#" class="nav-link has-dropdown"> <i class="fas fa-fire"></i><span>User</span></a>
+    <a href="#" class="nav-link has-dropdown"> <i class="fas fa-user  "></i><span>User</span></a>
     <ul class="dropdown-menu">
         <li>
             <a class="nav-link" href="{{route('user.index')}}">Tambah User</a>
@@ -22,7 +22,7 @@
 </li>
 @endif
 <li class="nav-item dropdown ">
-    <a href="#" class="nav-link has-dropdown"> <i class="fas fa-fire"></i><span>Daftar Cuti</span></a>
+    <a href="#" class="nav-link has-dropdown"> <i class="fas fa-list"></i><span>Daftar Cuti</span></a>
     <ul class="dropdown-menu">
            
         <li>
@@ -38,7 +38,7 @@
 </li>
 
 <li class="nav-item dropdown ">
-    <a href="#" class="nav-link has-dropdown"> <i class="fas fa-fire"></i><span>Riwayat Cuti</span></a>
+    <a href="#" class="nav-link has-dropdown"> <i class="fas fa-history"></i><span>Riwayat Cuti</span></a>
     <ul class="dropdown-menu">
            
         <li>

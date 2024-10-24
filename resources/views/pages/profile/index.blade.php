@@ -14,8 +14,8 @@
             <div class="section-header">
                 <h1>Profile</h1>
                 <div class="section-header-breadcrumb">
-                    <div class="breadcrumb-item active"><a href="{{route('home')}}">Dashboard</a></div>
-                    <div class="breadcrumb-item">Profile</div>
+                    <div class="breadcrumb-item active" ><a href="{{route('home')}}">Home</a></div>
+                   
                 </div>
             </div>
             <div class="section-body">
