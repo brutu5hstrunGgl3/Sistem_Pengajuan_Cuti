@@ -23,7 +23,7 @@ class UserController extends Controller
     $cutiSisa = $user->remaining_day; // Asumsi 'remaining_days' adalah kolom di tabel 'users'
 
     // Menampilkan dashboard
-    return view('pages.app.dashboard', compact('cutiSisa'));
+    return view('pages.App.dashboard', compact('cutiSisa'));
 }
 public function index(Request $request)
 {

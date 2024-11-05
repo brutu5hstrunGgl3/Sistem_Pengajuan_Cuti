@@ -52,7 +52,7 @@
 
             </div>
             <div class="form-group mt-2 mb-2">
-                <img src="{{ captcha_src('mini') }}" alt="captcha">
+                <!-- <img src="{{ captcha_src('inverse') }}" alt="captcha">
                     
                     <input type="text" name="captcha"
                          class="form-control @error('captcha') is-invalid @enderror"
@@ -61,12 +61,10 @@
 
                     <div class="invalid-feedback">{{ $message }}</div>
 
-                    @enderror
+                    @enderror -->
 
                 </div>
 
-
-   
                 <div class="form-group">
                     
                     <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">

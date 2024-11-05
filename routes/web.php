@@ -10,12 +10,12 @@ use Illuminate\Http\Request;
 
 
 Route::get('/', function () {
-    return view('Pages.Auth.auth-login'); 
+    return view('pages.Auth.auth-login'); 
     
 });
 
 Route::get('/cuti', function () {
-    return view('Pages.Cuti.cuti'); 
+    return view('pages.Cuti.cuti'); 
     
 });
 

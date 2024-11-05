@@ -71,21 +71,21 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::verifyEmailView(function () {
             return view('pages.Auth.auth-verify-email');
         });
+        // captcha
+        // Fortify::authenticateUsing(function (Request $request){
 
-        Fortify::authenticateUsing(function (Request $request){
-
-            $request->validate([
-                'email' => 'required|email',
-                'password' => 'required',
-                'captcha' => 'required|captcha'
-            ]);
-            // attemp to login the user
+        //     $request->validate([
+        //         'email' => 'required|email',
+        //         'password' => 'required',
+        //         'captcha' => 'required|captcha'
+        //     ]);
+        //     // attemp to login the user
         
-            if (Auth::attempt($request->only('email', 'password'))) {
-                    return Auth::user();
-            }
+        //     if (Auth::attempt($request->only('email', 'password'))) {
+        //             return Auth::user();
+        //     }
 
-        });
+        // });
 
 
 

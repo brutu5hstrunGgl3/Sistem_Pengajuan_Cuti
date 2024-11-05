@@ -1,3 +1,3 @@
   <div class="simple-footer">
-      Copyright &copy; project Fadli
+      Copyright &copy; Jaya Makmur Sempurna 2024
   </div>
