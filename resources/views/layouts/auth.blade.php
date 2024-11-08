@@ -24,6 +24,15 @@
         href="{{ asset('css/style.css') }}">
     <link rel="stylesheet"
         href="{{ asset('css/components.css') }}">
+        <style>
+        /* Background image styling */
+        body {
+            background: url("{{ asset('img/bg/backround.jpg') }}") no-repeat center center fixed;
+            background-size: cover;
+        }
+        /* Optional styling to add transparency to the form container */
+      
+    </style>
     <!-- Start GA -->
     <script async
         src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>

@@ -4,5 +4,5 @@
          width="100"
          class="mr-2">
          <br></br>
-         <strong><p style="color: #004d00;">Pt. Jaya Makmur Selaras</p></strong>
+         <strong><p style="color: white;">Sistem Informasi Pengajuan Cuti</p></strong>
  </div>
